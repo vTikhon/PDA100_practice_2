@@ -1,3 +1,7 @@
+import string
+import random
+import statistics
+
 # Задание
 # Дана строка:
 # string_01 = "History is always written by the winners. hen two cultures clash, the loser is obliterated,
@@ -14,23 +18,31 @@ string_01 = "History is always written by the winners. hen two cultures clash, t
 
 def calc_symbols(s: str) -> int:
     return len(list(s.replace(' ', '')))
-print(f'\nКоличество символов в строке, исключая пробелы: {calc_symbols(string_01)}')
 
-import string
 def calc_words(s: str) -> int:
     for ch in string.punctuation:
         s = s.replace(ch, ' ')
     return len(list(s.split()))
-print(f'Количество слов в строке, исключая символы: {calc_words(string_01)}\n')
 
+def print_words(s: str):
+    char_ = input('Введите букву: ')
+    for ch in string.punctuation:
+        s = s.replace(ch, ' ')
+    all_words = s.split()
+    filtered_words = [word for word in all_words if word.lower().startswith(char_.lower())]
+    print(f'Слова, начинающиеся на букву {char_}: {", ".join(filtered_words)}')
+
+print('\n')
+print(f'Количество символов в строке, исключая пробелы: {calc_symbols(string_01)}')
+print(f'Количество слов в строке, исключая символы: {calc_words(string_01)}')
+print_words(string_01)
+print('\n')
 
 
 
 # Задание
 # Создайте список из 100 случайных значений от -100 до 100 и вычислите медиану.
 
-import random
-import statistics
 def create_list():
     return [random.randint(-100, 100) for _ in range(100)]
 
